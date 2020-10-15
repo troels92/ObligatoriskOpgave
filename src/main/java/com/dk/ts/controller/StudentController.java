@@ -40,37 +40,32 @@ public class StudentController  {
         studentRepository.save(stu);
         return "redirect:/";
     }
-
-
-
+/*
     @GetMapping("/delete")
     public String delete(@RequestParam("id") int id, Model model) {
         model.addAttribute("stu", studentRepository.findById(id));
 
-        return "delete";
+        return "/";
     }
+
     @PostMapping("/delete")
     public String delete(@ModelAttribute Student stu, Model model){
         studentRepository.delete(stu);
-        return "redirect:/";
+        return "redirect:/index";
     }
-/*
-   @PostMapping("/delete")
-    public String delete(@ModelAttribute Student stu, Model model){
-        studentRepository.delete(stu.getStudentId());
-        return "redirect:/";
-    }
+
     @GetMapping("/edit")
     public String update(@RequestParam("id") int id, Model model){
-        model.addAttribute("student", studentRepository.read(id));
-        return "edit";
+        model.addAttribute("student", studentRepository.findById(id));
+        return "/edit";
     }
 
     @PostMapping("/edit")
     public String update(@ModelAttribute Student student) {
-        studentRepository.update(student);
-        return "redirect:/";
+        studentRepository.save(student);
+        return "redirect:/index";
     }
+
 
 
     @GetMapping("/enroll")
